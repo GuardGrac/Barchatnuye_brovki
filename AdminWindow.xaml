@@ -1,0 +1,63 @@
+﻿<Window x:Class="Barchatnuye_brovki.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Barchatnuye_brovki"
+        mc:Ignorable="d"
+         Title="Бархатные бровки.Окно администратора" FontFamily="Tahoma" Height="750" Width="1100" MinWidth="900" MinHeight="800">
+    <Grid>
+        <TextBlock Text="{Binding FirstName}" Margin="10 5 0 0" FontSize="18" Height="30" Width="240" x:Name="FirstName" VerticalAlignment="Top" HorizontalAlignment="Left"></TextBlock>
+        <Border Margin="0 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="4" Width="114px" BorderBrush="#e14a6d">
+            <Button VerticalAlignment="Top" BorderBrush="Transparent" HorizontalAlignment="Left" x:Name="Exit" FontWeight="Medium" Background="#e14a6d" Foreground="#fff" FontSize="16" Width="114" Height="30" Click="Exit_Click">Выйти</Button>
+        </Border>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Margin="80 10 0 0" Orientation="Horizontal">
+            <TextBox x:Name="SearchBox" FontSize="23" Background="#ffe4ff" Height="40" Width="500"  TextChanged="SearchBox_TextChanged"></TextBox>
+        </StackPanel>
+        <Border Margin="0 10 0 0" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="4" Width="114px" BorderBrush="#e14a6d">
+            <Button FontWeight="Medium" Background="#e14a6d" BorderBrush="Transparent" Foreground="#fff" FontSize="16" Height="30" Click="Button_Click">Добавить</Button>
+        </Border>
+        <TextBlock x:Name="SearchResultCount" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Height="40" FontSize="13" Padding="35 20"></TextBlock>
+        <ScrollViewer Margin="0 80 0 0">
+            <ItemsControl x:Name="ServiceItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#e14a6d" Background="#ffe4ff" BorderThickness="2" CornerRadius="10" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Width="1000" MinWidth="450">
+                            <StackPanel Orientation="Horizontal">
+                                <Border Margin="10" CornerRadius="10" Padding="20 0 0 0">
+                                    <Image Uid="{Binding Title}" Width="140px" Height="95px" Margin="0 0 20 0" Initialized="Image_Initialized"></Image>
+                                </Border>
+                                <StackPanel Orientation="Vertical">
+                                    <StackPanel>
+                                        <TextBlock FontSize="24" Text="{Binding Title}"></TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontSize="20" Margin="0 10 10 10" VerticalAlignment="Center">
+                                                <Run Text="{Binding Cost}"></Run>
+                                            рублей(ля)</TextBlock>
+                                        <TextBlock Margin="0 10 0 10" FontSize="20">
+                                                <Run Text="за"></Run>
+                                                <Run Text="{Binding DurationInSeconds}"></Run>
+                                                <Run Text="Минут(ы)"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel>
+                                        <TextBlock FontSize="18">
+                                                    <Run Text="* скидка: "></Run>
+                                                    <Run FontSize="20" Text="{Binding Discount}"></Run>
+                                                    <Run FontSize="20" Text="%"></Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Margin="0 20 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                                        <Button FontWeight="Medium" Width="120px" Height="30" Margin="0 0 10 0" Background="#e14a6d" BorderBrush="#e14a6d" Foreground="#fff" FontSize="16" x:Name="Change" Uid="{Binding Title}" Content="Изменить" Click="Change_Click"></Button>
+                                        <Button FontWeight="Medium" Width="130px" Height="30" Background="#e14a6d" BorderBrush="#e14a6d" Foreground="#fff" FontSize="16" Uid="{Binding Title}" Content="Удалить" Click="Button_Click_1"></Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</Window>
